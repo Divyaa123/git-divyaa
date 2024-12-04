@@ -1,0 +1,35 @@
+# Function to check if a list is in increasing or decreasing order
+def is_sorted(lst):
+    return lst == sorted(lst) or lst == sorted(lst, reverse=True)
+
+# Function to check if adjacent differences are between 1 and 3
+def has_valid_differences(lst):
+    for i in range(len(lst) - 1):
+        diff = abs(lst[i] - lst[i + 1])
+        if diff < 1 or diff > 3:
+            return False
+    return True
+
+# Function to check if a list is safe
+def is_safe(lst):
+    return is_sorted(lst) and has_valid_differences(lst)
+
+# Lists
+lists = [
+    [7, 6, 4, 2, 1],  # List 1
+    [1, 2, 7, 8, 9],  # List 2
+    [9, 7, 6, 2, 1],  # List 3
+    [1, 3, 2, 4, 5],  # List 4
+    [8, 6, 4, 4, 1],  # List 5
+    [1, 3, 6, 7, 9],  # List 6
+]
+
+# Check each list and determine if it's safe or unsafe
+results = []
+for i, lst in enumerate(lists, start=1):
+    status = "safe" if is_safe(lst) else "unsafe"
+    results.append(f"List {i}: {status}")
+
+# Output the results
+for result in results:
+    print(result)
