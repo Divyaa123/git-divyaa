@@ -1,0 +1,37 @@
+# Given lists
+ #left_list = [3, 4, 2, 1, 3, 3]
+ #right_list = [4, 3, 5, 3, 9, 3]
+
+# Function to dynamically input a list
+def input_list(prompt):
+    print(prompt)
+    n = int(input("Enter the number of entries in the list: "))
+    lst = []
+    for i in range(n):
+        value = int(input(f"Enter value {i + 1}: "))
+        lst.append(value)
+    return lst
+
+# Input lists dynamically
+left_list = input_list("Input values for the left list:")
+right_list = input_list("Input values for the right list:")
+
+# Convert the lists to integers if needed (already integers in this case)
+left_list = sorted(left_list)  # Sort the left list
+right_list = sorted(right_list)  # Sort the right list
+
+# Initialize total distance
+total_distance = 0
+
+# Loop through the sorted lists and calculate distances
+while left_list and right_list:
+    # Get the smallest elements from each list
+    min_left = left_list.pop(0)  # Remove and retrieve the first (smallest) element
+    min_right = right_list.pop(0)  # Remove and retrieve the first (smallest) element
+
+    # Calculate the difference and add to total distance
+    total_distance += abs(min_left - min_right)
+
+
+# Output the total distance
+print("Total distance between the lists:", total_distance)
